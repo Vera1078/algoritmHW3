@@ -1,0 +1,61 @@
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+
+        // ключи ввода
+        int[] keys = { 1, 2, 3, 4, 5, 6 };
+
+        Node head = null;
+        for (int i = keys.Length - 1; i >= 0; i--)
+        {
+            head = new Node(keys[i], head);
+        }
+
+        head = reverse(head);
+        printList(head);
+
+    }
+
+        static void printList(Node head)
+        {
+            Node ptr = head;
+            while (ptr != null)
+            {
+                Console.WriteLine(ptr.val);
+                ptr = ptr.next;
+            }
+            Console.WriteLine("null");
+        }
+        static Node reverse(Node head)
+        {
+            Node previous = null;
+            Node current = head;
+
+            // обход списка
+            while (current != null)
+            {
+                // сложно: обратите внимание на следующий узел
+                Node next = current.next;
+
+                current.next = previous;    // фиксируем текущий узел
+
+                previous = current;
+                current = next;
+            }
+
+            // фиксируем голову, чтобы она указывала на новый фронт
+            return previous;
+        }
+    }
+
+public class Node
+{
+    public int val;
+    public Node next;
+   public  Node(int value, Node next)
+    {
+        this.val = value;
+        this.next = next;
+    }
+}
