@@ -3,7 +3,7 @@ internal class Program
     private static void Main(string[] args)
     {
 
-        // ключи ввода
+        // ключи 
         int[] keys = { 1, 2, 3, 4, 5, 6 };
 
         Node head = null;
@@ -35,10 +35,12 @@ internal class Program
             // обход списка
             while (current != null)
             {
-                // сложно: обратите внимание на следующий узел
+                
                 Node next = current.next;
+                
+                // фиксируем текущий узел current.next;
 
-                current.next = previous;    // фиксируем текущий узел
+                current.next = previous;    
 
                 previous = current;
                 current = next;
